@@ -1,0 +1,22 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Exports and build output (APK/AAB are generated, never versioned)
+/build/
+/export/
+*.apk
+*.aab
+
+# Signing keys must never reach the repository
+*.keystore
+*.jks
+
+# Tooling
+__pycache__/
+*.pyc
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
