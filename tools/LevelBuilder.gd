@@ -203,6 +203,9 @@ func _build_level(number: int, path: String) -> void:
 	for unique_node: Node in [player, ground, camera, level_root.get_node("HUD")]:
 		unique_node.owner = level_root
 	_set_owner(level_root, level_root)
+	# Los nodos añadidos DENTRO de una instancia (el tinte del fondo) no los
+	# recorre _set_owner: hay que asignarles el dueño a mano o no se guardan.
+	tint.owner = level_root
 	for unique_node: Node in [player, ground, camera, level_root.get_node("HUD")]:
 		unique_node.unique_name_in_owner = true
 
