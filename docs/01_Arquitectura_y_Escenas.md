@@ -179,6 +179,8 @@ Por qué este orden:
 - **Tres "lienzos" (canvas)**: el mundo, el `ParallaxBackground` y cada `CanvasLayer` de UI tienen su propio lienzo. Por eso hay **dos `CanvasModulate`**: uno para el mundo y otro dentro del fondo. Las luces del mundo tampoco iluminan el fondo, y la UI nunca se oscurece. Detalle completo en [04](04_Iluminacion_y_Normal_Maps.md).
 - **Level.gd** conecta el HUD con Felix, calcula los límites de la cámara a partir de los tiles usados, reinicia el nivel al morir y aplica el *hitstop*.
 
+> **Nota sobre `ParallaxBackground`**: el proyecto lo usa porque lo pide el GDD y funciona perfectamente en Godot 4.7. Desde Godot 4.3 existe **`Parallax2D`**, que la documentación oficial recomienda como sustituto (un solo nodo por capa, sin `CanvasLayer`). Si algún día migras: cada `ParallaxLayer` pasa a ser un `Parallax2D` con `scroll_scale` = `motion_scale`, `repeat_size` = `motion_mirroring` y `autoscroll` en lugar de `AutoScrollLayer.gd`. Como `Parallax2D` vive en el lienzo del mundo, el `CanvasModulate` del nivel también lo oscurecería y `BackgroundTint` sobraría.
+
 ### Sistema de victoria: el Refugio de Gatos
 
 ```
