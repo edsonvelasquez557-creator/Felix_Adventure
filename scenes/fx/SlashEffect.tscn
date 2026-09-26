@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://resources/materials/unshaded_add.tres" id="1_6tto6"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/slash.png" id="2_5lwic"]
+[ext_resource type="Script" path="res://scripts/fx/SlashEffect.gd" id="3_12b41"]
+
+[node name="SlashEffect" type="Sprite2D" unique_id=520165375]
+z_index = 5
+material = ExtResource("1_6tto6")
+texture = ExtResource("2_5lwic")
+hframes = 4
+script = ExtResource("3_12b41")

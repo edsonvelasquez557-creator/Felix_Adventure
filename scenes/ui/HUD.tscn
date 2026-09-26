@@ -1,0 +1,206 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/HUD.gd" id="1_tk5th"]
+[ext_resource type="Texture2D" path="res://assets/ui/heart_full.png" id="2_khi7q"]
+[ext_resource type="Texture2D" path="res://assets/ui/heart_empty.png" id="3_sht56"]
+[ext_resource type="Script" path="res://scripts/ui/SafeAreaMargin.gd" id="4_x1lff"]
+[ext_resource type="Texture2D" path="res://assets/ui/coin_icon.png" id="5_q6ulx"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_pause.png" id="6_cghdm"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_pause_pressed.png" id="7_1f5xr"]
+[ext_resource type="Texture2D" path="res://assets/ui/joystick_base.png" id="8_akf4b"]
+[ext_resource type="Texture2D" path="res://assets/ui/joystick_tip.png" id="9_pxff2"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_jump.png" id="10_txt21"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_jump_pressed.png" id="11_8oje3"]
+[ext_resource type="PackedScene" path="res://scenes/ui/AbilityButton.tscn" id="12_am3x1"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_scratch.png" id="13_dbijb"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_scratch_pressed.png" id="14_xynvp"]
+[ext_resource type="Script" path="res://scripts/ui/AbilityButton.gd" id="15_pm1ro"]
+[ext_resource type="Texture2D" path="res://assets/ui/cooldown_48.png" id="16_qerig"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_howl.png" id="17_63jf0"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_howl_pressed.png" id="18_5p0ok"]
+[ext_resource type="Texture2D" path="res://assets/ui/cooldown_44.png" id="19_flsfv"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_slam.png" id="20_xiimh"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_slam_pressed.png" id="21_x8adn"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_fury.png" id="22_sanae"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_fury_pressed.png" id="23_mdcq3"]
+[ext_resource type="Texture2D" path="res://assets/ui/cooldown_40.png" id="24_pb7ce"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghlab"]
+radius = 22.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xhq87"]
+texture = ExtResource("8_akf4b")
+modulate_color = Color(1, 1, 1, 0.55)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_awgnq"]
+texture = ExtResource("9_pxff2")
+modulate_color = Color(1, 1, 1, 0.55)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52pfs"]
+texture = ExtResource("8_akf4b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jwvo8"]
+texture = ExtResource("9_pxff2")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lm0pd"]
+radius = 34.0
+
+[node name="HUD" type="CanvasLayer" unique_id=1349003342]
+layer = 10
+script = ExtResource("1_tk5th")
+heart_full = ExtResource("2_khi7q")
+heart_empty = ExtResource("3_sht56")
+
+[node name="SafeArea" type="MarginContainer" parent="." unique_id=964179947]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("4_x1lff")
+
+[node name="Root" type="Control" parent="SafeArea" unique_id=1855753374]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TopLeft" type="VBoxContainer" parent="SafeArea/Root" unique_id=390408541]
+layout_mode = 0
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Hearts" type="HBoxContainer" parent="SafeArea/Root/TopLeft" unique_id=1831594919]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="CoinRow" type="HBoxContainer" parent="SafeArea/Root/TopLeft" unique_id=1485574127]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="CoinIcon" type="TextureRect" parent="SafeArea/Root/TopLeft/CoinRow" unique_id=1822770439]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("5_q6ulx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="SafeArea/Root/TopLeft/CoinRow" unique_id=1515523804]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="FuryBar" type="ProgressBar" parent="SafeArea/Root/TopLeft" unique_id=57630721]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(84, 6)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="Banner" type="Label" parent="SafeArea/Root" unique_id=16225936]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 56.0
+offset_bottom = 120.0
+theme_type_variation = &"HeaderLabel"
+horizontal_alignment = 1
+
+[node name="PauseAnchor" type="Control" parent="SafeArea/Root" unique_id=225397902]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+mouse_filter = 2
+
+[node name="PauseButton" type="TouchScreenButton" parent="SafeArea/Root/PauseAnchor" unique_id=1824905308]
+texture_normal = ExtResource("6_cghdm")
+texture_pressed = ExtResource("7_1f5xr")
+shape = SubResource("CircleShape2D_ghlab")
+shape_visible = false
+action = "pause"
+
+[node name="TouchControls" type="Control" parent="SafeArea/Root" unique_id=1731169170]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Joystick" type="VirtualJoystick" parent="SafeArea/Root/TouchControls" unique_id=1577373542]
+layout_mode = 0
+anchor_top = 0.3
+anchor_right = 0.46
+anchor_bottom = 1.0
+theme_override_styles/normal_joystick = SubResource("StyleBoxTexture_xhq87")
+theme_override_styles/normal_tip = SubResource("StyleBoxTexture_awgnq")
+theme_override_styles/pressed_joystick = SubResource("StyleBoxTexture_52pfs")
+theme_override_styles/pressed_tip = SubResource("StyleBoxTexture_jwvo8")
+joystick_mode = 1
+joystick_size = 72.0
+tip_size = 32.0
+deadzone_ratio = 0.2
+initial_offset_ratio = Vector2(0.28, 0.66)
+action_left = &"move_left"
+action_right = &"move_right"
+action_up = &"move_up"
+action_down = &"move_down"
+
+[node name="ActionCluster" type="Control" parent="SafeArea/Root/TouchControls" unique_id=1786211896]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -160.0
+mouse_filter = 2
+
+[node name="JumpButton" type="TouchScreenButton" parent="SafeArea/Root/TouchControls/ActionCluster" unique_id=1284177631]
+position = Vector2(136, 96)
+texture_normal = ExtResource("10_txt21")
+texture_pressed = ExtResource("11_8oje3")
+shape = SubResource("CircleShape2D_lm0pd")
+shape_visible = false
+action = "jump"
+
+[node name="ScratchButton" type="TouchScreenButton" parent="SafeArea/Root/TouchControls/ActionCluster" unique_id=1211089260 instance=ExtResource("12_am3x1")]
+position = Vector2(72, 110)
+texture_normal = ExtResource("13_dbijb")
+texture_pressed = ExtResource("14_xynvp")
+shape_visible = false
+action = "ability_scratch"
+script = ExtResource("15_pm1ro")
+cooldown_texture = ExtResource("16_qerig")
+
+[node name="HowlButton" type="TouchScreenButton" parent="SafeArea/Root/TouchControls/ActionCluster" unique_id=1984260383 instance=ExtResource("12_am3x1")]
+position = Vector2(88, 54)
+texture_normal = ExtResource("17_63jf0")
+texture_pressed = ExtResource("18_5p0ok")
+shape_visible = false
+action = "ability_howl"
+script = ExtResource("15_pm1ro")
+ability = 0
+cooldown_texture = ExtResource("19_flsfv")
+
+[node name="SlamButton" type="TouchScreenButton" parent="SafeArea/Root/TouchControls/ActionCluster" unique_id=1066366523 instance=ExtResource("12_am3x1")]
+position = Vector2(148, 32)
+texture_normal = ExtResource("20_xiimh")
+texture_pressed = ExtResource("21_x8adn")
+shape_visible = false
+action = "ability_slam"
+script = ExtResource("15_pm1ro")
+ability = 3
+cooldown_texture = ExtResource("19_flsfv")
+
+[node name="FuryButton" type="TouchScreenButton" parent="SafeArea/Root/TouchControls/ActionCluster" unique_id=1778988372 instance=ExtResource("12_am3x1")]
+position = Vector2(26, 70)
+texture_normal = ExtResource("22_sanae")
+texture_pressed = ExtResource("23_mdcq3")
+shape_visible = false
+action = "ability_fury"
+script = ExtResource("15_pm1ro")
+ability = 2
+cooldown_texture = ExtResource("24_pb7ce")

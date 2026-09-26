@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/particle_pixel.png" id="1_wotk3"]
+[ext_resource type="Script" path="res://scripts/fx/ParticleBurst.gd" id="2_d0hw4"]
+
+[sub_resource type="Gradient" id="Gradient_t2pnt"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="DebrisBurst" type="CPUParticles2D" unique_id=161160759]
+amount = 14
+texture = ExtResource("1_wotk3")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(10, 4)
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, 520)
+initial_velocity_min = 50.0
+initial_velocity_max = 130.0
+color = Color(0.75, 0.52, 0.3, 1)
+color_ramp = SubResource("Gradient_t2pnt")
+script = ExtResource("2_d0hw4")

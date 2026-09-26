@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SkinData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/SkinData.gd" id="1_kjuni"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/felix_classic.png" id="2_ruei2"]
+
+[resource]
+script = ExtResource("1_kjuni")
+id = &"classic"
+display_name = "Felix Clásico"
+description = "El atigrado naranja de siempre. Valiente y un poco glotón."
+sprite_sheet = ExtResource("2_ruei2")
+accent_color = Color(0.9490196, 0.5882353, 0.22745098, 1)

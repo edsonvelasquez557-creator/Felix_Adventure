@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/obstacles/ObstacleSpawner.gd" id="1_4phkc"]
+[ext_resource type="PackedScene" path="res://scenes/obstacles/FallingCrate.tscn" id="2_rwfme"]
+[ext_resource type="Texture2D" path="res://assets/sprites/obstacles/crate.png" id="3_ojh8q"]
+
+[node name="CrateSpawner" type="Marker2D" unique_id=1404180126]
+script = ExtResource("1_4phkc")
+obstacle_scene = ExtResource("2_rwfme")
+interval = 2.2
+instance_properties = {
+"break_on_land": true,
+"drop_immediately": true
+}
+
+[node name="Hook" type="Sprite2D" parent="." unique_id=1289714020]
+modulate = Color(0.45, 0.4, 0.55, 1)
+scale = Vector2(1.2, 0.35)
+texture = ExtResource("3_ojh8q")
+
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1555579334]
+unique_name_in_owner = true
+rect = Rect2(-80, -20, 160, 260)

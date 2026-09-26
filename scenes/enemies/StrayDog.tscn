@@ -1,0 +1,239 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/StrayDog.gd" id="1_eqiac"]
+[ext_resource type="PackedScene" path="res://scenes/world/Coin.tscn" id="2_jjmly"]
+[ext_resource type="PackedScene" path="res://scenes/fx/EnemyPoof.tscn" id="3_skhgj"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/stray_dog.png" id="4_34ncc"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/stray_dog_n.png" id="5_qxk33"]
+[ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="6_go0og"]
+[ext_resource type="Script" path="res://scripts/components/Hurtbox.gd" id="7_05qcs"]
+[ext_resource type="Script" path="res://scripts/components/Hitbox.gd" id="8_t2aur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gf02"]
+size = Vector2(24, 16)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fdchk"]
+diffuse_texture = ExtResource("4_34ncc")
+normal_texture = ExtResource("5_qxk33")
+
+[sub_resource type="Animation" id="Animation_j52ha"]
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_im378"]
+length = 0.3333333333333333
+loop_mode = 1
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_c730n"]
+length = 0.375
+loop_mode = 1
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875, 0.25, 0.3125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_jni03"]
+length = 0.5
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_jusdm"]
+length = 0.25
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 5), Vector2i(1, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_iyx3o"]
+length = 0.6666666666666666
+loop_mode = 1
+step = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o1gcb"]
+length = 0.5
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_wcle7"]
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iib30"]
+_data = {
+&"RESET": SubResource("Animation_j52ha"),
+&"alert": SubResource("Animation_im378"),
+&"charge": SubResource("Animation_c730n"),
+&"death": SubResource("Animation_jni03"),
+&"hurt": SubResource("Animation_jusdm"),
+&"idle": SubResource("Animation_iyx3o"),
+&"recover": SubResource("Animation_o1gcb"),
+&"walk": SubResource("Animation_wcle7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4ack"]
+size = Vector2(26, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdsvv"]
+size = Vector2(22, 14)
+
+[node name="StrayDog" type="CharacterBody2D" unique_id=822692642]
+collision_layer = 4
+script = ExtResource("1_eqiac")
+knockback_resistance = 0.15
+coin_reward = 3
+coin_scene = ExtResource("2_jjmly")
+death_burst_scene = ExtResource("3_skhgj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=47356557]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_7gf02")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1928529458]
+unique_name_in_owner = true
+
+[node name="Sprite" type="Sprite2D" parent="Visuals" unique_id=916724132]
+unique_name_in_owner = true
+position = Vector2(0, -14)
+texture = SubResource("CanvasTexture_fdchk")
+hframes = 6
+vframes = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=46658670]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_iib30")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1601105819]
+unique_name_in_owner = true
+script = ExtResource("6_go0og")
+max_health = 6
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1345699059 node_paths=PackedStringArray("health")]
+unique_name_in_owner = true
+position = Vector2(0, -9)
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("7_05qcs")
+health = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=983662261]
+shape = SubResource("RectangleShape2D_t4ack")
+
+[node name="ContactHitbox" type="Area2D" parent="." unique_id=666088443]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+collision_layer = 16
+collision_mask = 32
+monitorable = false
+script = ExtResource("8_t2aur")
+knockback_lift = 140.0
+rehit_interval = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox" unique_id=2054659904]
+shape = SubResource("RectangleShape2D_pdsvv")
+
+[node name="VisionRay" type="RayCast2D" parent="." unique_id=111871254]
+unique_name_in_owner = true
+position = Vector2(0, -11)
+target_position = Vector2(-150, 0)
+collision_mask = 3
+
+[node name="WallRay" type="RayCast2D" parent="." unique_id=1569247358]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+target_position = Vector2(-16, 0)
+
+[node name="LedgeRay" type="RayCast2D" parent="." unique_id=797832766]
+unique_name_in_owner = true
+position = Vector2(-14, -2)
+target_position = Vector2(0, 12)

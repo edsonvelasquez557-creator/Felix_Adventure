@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/obstacles/YarnBall.gd" id="1_yf6as"]
+[ext_resource type="PackedScene" path="res://scenes/fx/YarnBurst.tscn" id="2_1og2l"]
+[ext_resource type="Texture2D" path="res://assets/sprites/obstacles/yarn_ball.png" id="3_4q7wk"]
+[ext_resource type="Texture2D" path="res://assets/sprites/obstacles/yarn_ball_n.png" id="4_irfee"]
+[ext_resource type="Script" path="res://scripts/components/Hitbox.gd" id="5_vs4id"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbt46"]
+radius = 13.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_v8fap"]
+diffuse_texture = ExtResource("3_4q7wk")
+normal_texture = ExtResource("4_irfee")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xmasa"]
+radius = 12.0
+
+[node name="YarnBall" type="CharacterBody2D" unique_id=1820998669]
+collision_layer = 4
+script = ExtResource("1_yf6as")
+unravel_scene = ExtResource("2_1og2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=843830988]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_pbt46")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2011940537]
+unique_name_in_owner = true
+position = Vector2(0, -15)
+texture = SubResource("CanvasTexture_v8fap")
+hframes = 8
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1420288054]
+unique_name_in_owner = true
+position = Vector2(0, -13)
+collision_layer = 16
+collision_mask = 32
+monitorable = false
+script = ExtResource("5_vs4id")
+knockback_force = 220.0
+knockback_lift = 170.0
+rehit_interval = 0.6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1599780347]
+shape = SubResource("CircleShape2D_xmasa")

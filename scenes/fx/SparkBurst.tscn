@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://resources/materials/unshaded_add.tres" id="1_0g6rb"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/particle_spark.png" id="2_mexsk"]
+[ext_resource type="Script" path="res://scripts/fx/ParticleBurst.gd" id="3_f0g26"]
+
+[sub_resource type="Gradient" id="Gradient_t2pnt"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="SparkBurst" type="CPUParticles2D" unique_id=1803184324]
+material = ExtResource("1_0g6rb")
+amount = 12
+texture = ExtResource("2_mexsk")
+lifetime = 0.35
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 120.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 60.0
+initial_velocity_max = 140.0
+color = Color(1, 0.85, 0.4, 1)
+color_ramp = SubResource("Gradient_t2pnt")
+script = ExtResource("3_f0g26")

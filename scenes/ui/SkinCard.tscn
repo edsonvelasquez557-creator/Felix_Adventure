@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/SkinCard.gd" id="1_54mgo"]
+
+[node name="SkinCard" type="PanelContainer" unique_id=1274780446]
+custom_minimum_size = Vector2(136, 0)
+script = ExtResource("1_54mgo")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1916928832]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Preview" type="TextureRect" parent="VBox" unique_id=1419295301]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="VBox" unique_id=1051095151]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DescriptionLabel" type="Label" parent="VBox" unique_id=796831902]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"SmallLabel"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ActionButton" type="Button" parent="VBox" unique_id=44747021]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2

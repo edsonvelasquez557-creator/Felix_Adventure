@@ -1,0 +1,57 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/PauseMenu.gd" id="1_vb6pq"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=795214081]
+layer = 20
+script = ExtResource("1_vb6pq")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1755356243]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.03, 0.1, 0.72)
+
+[node name="Center" type="CenterContainer" parent="Overlay" unique_id=2426796]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="PanelContainer" parent="Overlay/Center" unique_id=586188755]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Overlay/Center/Panel" unique_id=2114511330]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Overlay/Center/Panel/VBox" unique_id=1265455803]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Pausa"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Overlay/Center/Panel/VBox" unique_id=993143030]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "Continuar"
+
+[node name="RestartButton" type="Button" parent="Overlay/Center/Panel/VBox" unique_id=1346504339]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "Reiniciar nivel"
+
+[node name="VibrationButton" type="CheckButton" parent="Overlay/Center/Panel/VBox" unique_id=1695395901]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "Vibración"
+
+[node name="MenuButton" type="Button" parent="Overlay/Center/Panel/VBox" unique_id=1615866692]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "Menú principal"

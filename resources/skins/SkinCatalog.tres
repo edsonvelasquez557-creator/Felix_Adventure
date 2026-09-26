@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkinCatalog" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/SkinCatalog.gd" id="1_2wnhh"]
+[ext_resource type="Script" path="res://scripts/resources/SkinData.gd" id="2_ixjt0"]
+[ext_resource type="Resource" path="res://resources/skins/skin_classic.tres" id="3_8y03u"]
+[ext_resource type="Resource" path="res://resources/skins/skin_midnight.tres" id="4_imv1p"]
+[ext_resource type="Resource" path="res://resources/skins/skin_siamese.tres" id="5_ml2eh"]
+[ext_resource type="Resource" path="res://resources/skins/skin_snow.tres" id="6_2qmxj"]
+[ext_resource type="Resource" path="res://resources/skins/skin_cyber.tres" id="7_7ulls"]
+
+[resource]
+script = ExtResource("1_2wnhh")
+skins = Array[ExtResource("2_ixjt0")]([ExtResource("3_8y03u"), ExtResource("4_imv1p"), ExtResource("5_ml2eh"), ExtResource("6_2qmxj"), ExtResource("7_7ulls")])

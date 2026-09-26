@@ -1,0 +1,174 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="1_xpiny"]
+[ext_resource type="Texture2D" path="res://assets/ui/lock.png" id="2_bhu4a"]
+[ext_resource type="PackedScene" path="res://scenes/world/ParallaxCity.tscn" id="3_e2per"]
+[ext_resource type="Script" path="res://scripts/ui/SafeAreaMargin.gd" id="4_7mi0g"]
+[ext_resource type="Texture2D" path="res://assets/ui/coin_icon.png" id="5_nqjyj"]
+
+[node name="MainMenu" type="Control" unique_id=1647720594]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_xpiny")
+lock_icon = ExtResource("2_bhu4a")
+
+[node name="Background" type="ParallaxBackground" parent="." unique_id=1483555978 instance=ExtResource("3_e2per")]
+scroll_ignore_camera_zoom = true
+
+[node name="Ground" type="ColorRect" parent="." unique_id=749684804]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+mouse_filter = 2
+color = Color(0.22745098, 0.19607843, 0.27450982, 1)
+
+[node name="Curb" type="ColorRect" parent="Ground" unique_id=1035346782]
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.65882355, 0.627451, 0.72156864, 1)
+
+[node name="SafeArea" type="MarginContainer" parent="." unique_id=48516631]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("4_7mi0g")
+base_margin = 12
+
+[node name="Layout" type="Control" parent="SafeArea" unique_id=1143258031]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="FelixPreview" type="TextureRect" parent="SafeArea/Layout" unique_id=691410047]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = -164.0
+offset_right = 180.0
+offset_bottom = -20.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleBox" type="VBoxContainer" parent="SafeArea/Layout" unique_id=1014753652]
+layout_mode = 0
+anchor_right = 0.5
+offset_left = 12.0
+offset_top = 8.0
+
+[node name="Title" type="Label" parent="SafeArea/Layout/TitleBox" unique_id=514830106]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "FELIX"
+
+[node name="Subtitle" type="Label" parent="SafeArea/Layout/TitleBox" unique_id=697543745]
+layout_mode = 2
+text = "Aventura felina en la ciudad"
+
+[node name="Menu" type="VBoxContainer" parent="SafeArea/Layout" unique_id=387884753]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -92.0
+offset_right = -8.0
+offset_bottom = 92.0
+theme_override_constants/separation = 8
+
+[node name="PlayButton" type="Button" parent="SafeArea/Layout/Menu" unique_id=1786112416]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+text = "Jugar"
+
+[node name="LevelsButton" type="Button" parent="SafeArea/Layout/Menu" unique_id=1553778284]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+text = "Niveles"
+
+[node name="ShopButton" type="Button" parent="SafeArea/Layout/Menu" unique_id=1907078865]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+text = "Tienda"
+
+[node name="QuitButton" type="Button" parent="SafeArea/Layout/Menu" unique_id=2134791695]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+text = "Salir"
+
+[node name="CoinBox" type="HBoxContainer" parent="SafeArea/Layout" unique_id=486706702]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = 28.0
+alignment = 2
+
+[node name="CoinIcon" type="TextureRect" parent="SafeArea/Layout/CoinBox" unique_id=2086683654]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("5_nqjyj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="SafeArea/Layout/CoinBox" unique_id=741702356]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="LevelPanel" type="Control" parent="." unique_id=2011403830]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="LevelPanel" unique_id=55130430]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.03, 0.1, 0.7)
+
+[node name="Center" type="CenterContainer" parent="LevelPanel" unique_id=1622682313]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="PanelContainer" parent="LevelPanel/Center" unique_id=1868934834]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="LevelPanel/Center/Panel" unique_id=598165273]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="LevelPanel/Center/Panel/VBox" unique_id=1562852764]
+layout_mode = 2
+theme_type_variation = &"HeaderLabel"
+text = "Elige un nivel"
+horizontal_alignment = 1
+
+[node name="LevelGrid" type="GridContainer" parent="LevelPanel/Center/Panel/VBox" unique_id=1244272585]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 5
+
+[node name="CloseLevelsButton" type="Button" parent="LevelPanel/Center/Panel/VBox" unique_id=1165975952]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+text = "Volver"

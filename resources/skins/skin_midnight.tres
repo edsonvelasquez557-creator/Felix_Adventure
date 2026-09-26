@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkinData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/SkinData.gd" id="1_u6d00"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/felix_midnight.png" id="2_0ne3h"]
+
+[resource]
+script = ExtResource("1_u6d00")
+id = &"midnight"
+display_name = "Sombra de Medianoche"
+description = "Negro como la noche; sus ojos dorados brillan en los callejones."
+price = 150
+sprite_sheet = ExtResource("2_0ne3h")
+accent_color = Color(0.5411765, 0.49803922, 0.8156863, 1)

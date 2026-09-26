@@ -17,6 +17,7 @@ signal blocked(hit: HitData)
 @export_range(0.0, 5.0, 0.05) var invulnerability_time: float = 0.0
 
 var _invulnerable_left := 0.0
+var _blink_left := 0.0
 var _forced_invulnerable := false
 
 
@@ -27,6 +28,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if _invulnerable_left > 0.0:
 		_invulnerable_left = maxf(_invulnerable_left - delta, 0.0)
+	if _blink_left > 0.0:
+		_blink_left = maxf(_blink_left - delta, 0.0)
 
 
 ## Aplica el golpe si procede. Devuelve true si el daño se hizo efectivo.
@@ -37,7 +40,7 @@ func receive_hit(hit: HitData) -> bool:
 	if health != null:
 		health.take_damage(hit.damage)
 	if invulnerability_time > 0.0:
-		_invulnerable_left = invulnerability_time
+		start_invulnerability(invulnerability_time, true)
 	hurt.emit(hit)
 	return true
 
@@ -47,13 +50,18 @@ func is_invulnerable() -> bool:
 			or (health != null and health.is_dead())
 
 
-## True mientras duran los i-frames temporizados (para el parpadeo).
+## True mientras dura la invulnerabilidad por daño recibido (para el parpadeo).
 func is_blinking() -> bool:
-	return _invulnerable_left > 0.0
+	return _blink_left > 0.0
 
 
-func start_invulnerability(duration: float) -> void:
+## Invulnerabilidad temporal. [param blink] = true solo para los i-frames tras
+## recibir daño; la protección de una habilidad (p. ej. el impacto sísmico)
+## no debe hacer parpadear al personaje.
+func start_invulnerability(duration: float, blink: bool = false) -> void:
 	_invulnerable_left = maxf(_invulnerable_left, duration)
+	if blink:
+		_blink_left = maxf(_blink_left, duration)
 
 
 ## Invulnerabilidad controlada por estado (p. ej. durante el picado sísmico).

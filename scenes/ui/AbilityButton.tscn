@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/btn_scratch.png" id="1_iingu"]
+[ext_resource type="Texture2D" path="res://assets/ui/btn_scratch_pressed.png" id="2_gbutr"]
+[ext_resource type="Script" path="res://scripts/ui/AbilityButton.gd" id="3_cjlnf"]
+[ext_resource type="Texture2D" path="res://assets/ui/cooldown_48.png" id="4_mg21b"]
+
+[node name="AbilityButton" type="TouchScreenButton" unique_id=1211089260]
+texture_normal = ExtResource("1_iingu")
+texture_pressed = ExtResource("2_gbutr")
+shape_visible = false
+action = "ability_scratch"
+script = ExtResource("3_cjlnf")
+cooldown_texture = ExtResource("4_mg21b")
+
+[node name="CooldownOverlay" type="TextureProgressBar" parent="." unique_id=1469108289]
+unique_name_in_owner = true
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 2
+fill_mode = 4
+texture_progress = ExtResource("4_mg21b")
+
+[node name="CooldownLabel" type="Label" parent="." unique_id=652935631]
+unique_name_in_owner = true
+offset_right = 48.0
+offset_bottom = 48.0
+horizontal_alignment = 1
+vertical_alignment = 1

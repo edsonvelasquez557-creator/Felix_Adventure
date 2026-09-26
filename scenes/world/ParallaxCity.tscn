@@ -1,0 +1,57 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/backgrounds/sky_gradient.png" id="1_hq7aw"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/stars.png" id="2_nd706"]
+[ext_resource type="Script" path="res://scripts/world/AutoScrollLayer.gd" id="3_xglrl"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/clouds.png" id="4_ndr7a"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/city_far.png" id="5_wi25x"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/city_near.png" id="6_g7tld"]
+
+[node name="ParallaxCity" type="ParallaxBackground" unique_id=1483555978]
+scroll_ignore_camera_zoom = true
+
+[node name="Sky" type="ParallaxLayer" parent="." unique_id=60090366]
+motion_scale = Vector2(0, 0)
+
+[node name="Gradient" type="Sprite2D" parent="Sky" unique_id=1468592272]
+position = Vector2(-40, -40)
+scale = Vector2(140, 1)
+texture = ExtResource("1_hq7aw")
+centered = false
+
+[node name="Stars" type="Sprite2D" parent="Sky" unique_id=1848550781]
+position = Vector2(0, -30)
+texture = ExtResource("2_nd706")
+centered = false
+
+[node name="Clouds" type="ParallaxLayer" parent="." unique_id=1599329252]
+motion_scale = Vector2(0.08, 0.02)
+motion_mirroring = Vector2(960, 0)
+script = ExtResource("3_xglrl")
+scroll_velocity = Vector2(-5, 0)
+
+[node name="Sprite" type="Sprite2D" parent="Clouds" unique_id=958113385]
+texture = ExtResource("4_ndr7a")
+centered = false
+
+[node name="FarCity" type="ParallaxLayer" parent="." unique_id=1482907836]
+motion_scale = Vector2(0.2, 0.05)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite" type="Sprite2D" parent="FarCity" unique_id=1141053022]
+position = Vector2(0, 150)
+texture = ExtResource("5_wi25x")
+centered = false
+
+[node name="NearCity" type="ParallaxLayer" parent="." unique_id=1225252112]
+motion_scale = Vector2(0.45, 0.1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite" type="Sprite2D" parent="NearCity" unique_id=1627644282]
+position = Vector2(0, 205)
+texture = ExtResource("6_g7tld")
+centered = false
+
+[node name="Fill" type="Polygon2D" parent="NearCity" unique_id=565505811]
+color = Color(0.13333334, 0.101960786, 0.20392157, 1)
+polygon = PackedVector2Array(0, 404, 960, 404, 960, 760, 0, 760)

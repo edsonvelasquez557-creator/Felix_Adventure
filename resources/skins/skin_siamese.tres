@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkinData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/SkinData.gd" id="1_wtdnd"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/felix_siamese.png" id="2_rpnoc"]
+
+[resource]
+script = ExtResource("1_wtdnd")
+id = &"siamese"
+display_name = "Siamés Real"
+description = "Elegancia de palacio con puntas color chocolate."
+price = 300
+sprite_sheet = ExtResource("2_rpnoc")
+accent_color = Color(0.78431374, 0.65882355, 0.53333336, 1)

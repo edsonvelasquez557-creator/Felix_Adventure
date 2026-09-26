@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/obstacles/Puddle.gd" id="1_toybh"]
+[ext_resource type="PackedScene" path="res://scenes/fx/SplashBurst.tscn" id="2_aeuo1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/obstacles/puddle.png" id="3_4r12m"]
+[ext_resource type="Texture2D" path="res://assets/sprites/obstacles/puddle_n.png" id="4_ljlj2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/obstacles/puddle_specular.png" id="5_87tlm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n323m"]
+resource_local_to_scene = true
+size = Vector2(42, 8)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1ip6n"]
+diffuse_texture = ExtResource("3_4r12m")
+normal_texture = ExtResource("4_ljlj2")
+specular_texture = ExtResource("5_87tlm")
+
+[node name="Puddle" type="Area2D" unique_id=2036757719]
+z_index = 1
+collision_layer = 256
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_toybh")
+splash_scene = ExtResource("2_aeuo1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2018149550]
+unique_name_in_owner = true
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_n323m")
+
+[node name="Surface" type="NinePatchRect" parent="." unique_id=477631876]
+unique_name_in_owner = true
+offset_left = -24.0
+offset_top = -4.0
+offset_right = 24.0
+offset_bottom = 6.0
+texture = SubResource("CanvasTexture_1ip6n")
+patch_margin_left = 8
+patch_margin_right = 8
+axis_stretch_horizontal = 2

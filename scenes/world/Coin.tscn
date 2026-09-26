@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/world/Coin.gd" id="1_wboav"]
+[ext_resource type="Material" path="res://resources/materials/unshaded.tres" id="2_2gocc"]
+[ext_resource type="Texture2D" path="res://assets/sprites/world/coin.png" id="3_7e383"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mk4tu"]
+radius = 7.0
+
+[node name="Coin" type="Area2D" unique_id=1656394382]
+collision_layer = 128
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_wboav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1397385347]
+shape = SubResource("CircleShape2D_mk4tu")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1956683425]
+unique_name_in_owner = true
+material = ExtResource("2_2gocc")
+texture = ExtResource("3_7e383")
+hframes = 6

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkinData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/SkinData.gd" id="1_3rux7"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/felix_cyber.png" id="2_0l4il"]
+
+[resource]
+script = ExtResource("1_3rux7")
+id = &"cyber"
+display_name = "Cyber Felix"
+description = "Rayas de neón y bigotes de fibra óptica. Edición 2099."
+price = 800
+sprite_sheet = ExtResource("2_0l4il")
+accent_color = Color(0, 1, 0.8784314, 1)

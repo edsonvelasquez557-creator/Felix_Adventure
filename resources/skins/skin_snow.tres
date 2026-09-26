@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SkinData" format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/SkinData.gd" id="1_1qnb0"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/felix_snow.png" id="2_v1v85"]
+
+[resource]
+script = ExtResource("1_1qnb0")
+id = &"snow"
+display_name = "Copo de Nieve"
+description = "Blanco y esponjoso. Nadie sospecha de semejante ternura."
+price = 450
+sprite_sheet = ExtResource("2_v1v85")
+accent_color = Color(0.7372549, 0.84705883, 1, 1)

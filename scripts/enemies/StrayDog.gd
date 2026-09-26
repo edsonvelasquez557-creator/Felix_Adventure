@@ -10,7 +10,7 @@ extends Enemy
 ##   [member alert_time]: es la telegrafía que avisa al jugador.
 ## - CHARGE: embestida en línea recta con daño y retroceso aumentados.
 ## - RECOVER: queda aturdido (más tiempo si se estrelló contra una pared).
-##   Es la ventana ideal para castigarlo.
+##   Es la ventana ideal para castigarlo: mareado no hace daño por contacto.
 ## Si Felix salta por encima, el rayo no lo ve: esquivar es una estrategia.
 
 enum DogState { PATROL, ALERT, CHARGE, RECOVER }
@@ -82,6 +82,8 @@ func _enter_dog_state(new_state: DogState) -> void:
 	var charging := new_state == DogState.CHARGE
 	contact_hitbox.damage = charge_damage if charging else contact_damage
 	contact_hitbox.knockback_force = charge_knockback if charging else _default_knockback
+	# Mareado tras la embestida: ventana segura para castigarlo.
+	contact_hitbox.active = new_state != DogState.RECOVER
 	match new_state:
 		DogState.PATROL:
 			_play_animation(&"walk")

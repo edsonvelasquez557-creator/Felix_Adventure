@@ -11,7 +11,7 @@ extends Node2D
 
 @export_range(0, 9) var level_index: int = 0
 @export var level_name: String = "Nivel"
-@export var respawn_delay: float = 1.4
+@export var respawn_delay: float = 1.0
 ## Escala de tiempo durante el hitstop (0.05 = casi congelado).
 @export_range(0.0, 1.0, 0.01) var hitstop_time_scale: float = 0.05
 ## Tiles extra por encima del mapa que la cámara puede mostrar (cielo abierto).

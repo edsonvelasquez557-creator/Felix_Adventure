@@ -74,6 +74,7 @@ func _physics_process(delta: float) -> void:
 		if not affected_by_gravity:
 			velocity.y = move_toward(velocity.y, 0.0, 500.0 * delta)
 		if _stun_left <= 0.0:
+			contact_hitbox.active = true
 			_on_stun_ended()
 	else:
 		_physics_ai(delta)
@@ -135,6 +136,9 @@ func _on_hurtbox_hurt(hit: HitData) -> void:
 		return
 	velocity = hit.knockback * (1.0 - knockback_resistance)
 	_stun_left = hurt_stun_time
+	# Un enemigo aturdido no hace daño por contacto: así los combos cuerpo a
+	# cuerpo (Ráfaga de Rasguños) no castigan al jugador por acertar.
+	contact_hitbox.active = false
 	_play_animation(&"hurt")
 	_on_hit_reaction(hit)
 

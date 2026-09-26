@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/obstacles/ObstacleSpawner.gd" id="1_6n255"]
+[ext_resource type="PackedScene" path="res://scenes/obstacles/YarnBall.tscn" id="2_wtf55"]
+[ext_resource type="Texture2D" path="res://assets/sprites/obstacles/crate.png" id="3_n51xe"]
+[ext_resource type="Texture2D" path="res://assets/sprites/obstacles/crate_n.png" id="4_edtel"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_btorw"]
+diffuse_texture = ExtResource("3_n51xe")
+normal_texture = ExtResource("4_edtel")
+
+[node name="YarnBallSpawner" type="Marker2D" unique_id=511240844]
+script = ExtResource("1_6n255")
+obstacle_scene = ExtResource("2_wtf55")
+interval = 3.4
+start_delay = 0.8
+max_alive = 2
+instance_properties = {
+"direction": -1.0
+}
+
+[node name="Basket" type="Sprite2D" parent="." unique_id=12391457]
+modulate = Color(0.95, 0.7, 0.85, 1)
+position = Vector2(12, -12)
+texture = SubResource("CanvasTexture_btorw")
+
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=136965062]
+unique_name_in_owner = true
+rect = Rect2(-420, -120, 460, 180)

@@ -1,0 +1,88 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/Shop.gd" id="1_rjxai"]
+[ext_resource type="PackedScene" path="res://scenes/world/ParallaxCity.tscn" id="2_rxfj5"]
+[ext_resource type="Script" path="res://scripts/ui/SafeAreaMargin.gd" id="3_u6qn3"]
+[ext_resource type="Texture2D" path="res://assets/ui/coin_icon.png" id="4_qvb3k"]
+
+[node name="Shop" type="Control" unique_id=684257073]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_rjxai")
+
+[node name="Background" type="ParallaxBackground" parent="." unique_id=1483555978 instance=ExtResource("2_rxfj5")]
+scroll_ignore_camera_zoom = true
+
+[node name="Dim" type="ColorRect" parent="." unique_id=443940013]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.06, 0.04, 0.12, 0.55)
+
+[node name="SafeArea" type="MarginContainer" parent="." unique_id=1769742027]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("3_u6qn3")
+base_margin = 12
+
+[node name="VBox" type="VBoxContainer" parent="SafeArea" unique_id=1704595570]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="SafeArea/VBox" unique_id=571834852]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="SafeArea/VBox/Header" unique_id=630226566]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 34)
+layout_mode = 2
+text = "< Volver"
+
+[node name="Title" type="Label" parent="SafeArea/VBox/Header" unique_id=955399056]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HeaderLabel"
+text = "Tienda de Skins"
+horizontal_alignment = 1
+
+[node name="CoinBox" type="HBoxContainer" parent="SafeArea/VBox/Header" unique_id=975216167]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="CoinIcon" type="TextureRect" parent="SafeArea/VBox/Header/CoinBox" unique_id=1853135628]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("4_qvb3k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="SafeArea/VBox/Header/CoinBox" unique_id=1876417474]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="Scroll" type="ScrollContainer" parent="SafeArea/VBox" unique_id=894501166]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 0
+
+[node name="CardsCenter" type="CenterContainer" parent="SafeArea/VBox/Scroll" unique_id=830433686]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Cards" type="HBoxContainer" parent="SafeArea/VBox/Scroll/CardsCenter" unique_id=1681628062]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MessageLabel" type="Label" parent="SafeArea/VBox" unique_id=25166774]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+horizontal_alignment = 1

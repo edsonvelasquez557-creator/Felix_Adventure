@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/fx/SeismicCrack.gd" id="1_lolws"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/crack.png" id="2_jg7h5"]
+[ext_resource type="Texture2D" path="res://resources/lights/light_soft.tres" id="3_rxcbo"]
+
+[node name="SeismicCrack" type="Node2D" unique_id=1472780863]
+z_index = 1
+script = ExtResource("1_lolws")
+
+[node name="Decal" type="Sprite2D" parent="." unique_id=1926574081]
+unique_name_in_owner = true
+position = Vector2(0, 6)
+texture = ExtResource("2_jg7h5")
+hframes = 3
+
+[node name="Flash" type="PointLight2D" parent="." unique_id=1850669149]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+color = Color(1, 0.62, 0.3, 1)
+energy = 0.0
+texture = ExtResource("3_rxcbo")
+texture_scale = 1.6
+height = 12.0

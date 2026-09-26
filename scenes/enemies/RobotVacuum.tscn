@@ -1,0 +1,145 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/RobotVacuum.gd" id="1_grbci"]
+[ext_resource type="PackedScene" path="res://scenes/fx/SparkBurst.tscn" id="2_gpva0"]
+[ext_resource type="PackedScene" path="res://scenes/world/Coin.tscn" id="3_4hdni"]
+[ext_resource type="PackedScene" path="res://scenes/fx/EnemyPoof.tscn" id="4_cut8o"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/robot_vacuum.png" id="5_i8q4e"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/robot_vacuum_n.png" id="6_pweid"]
+[ext_resource type="Script" path="res://scripts/components/Hurtbox.gd" id="7_f10ea"]
+[ext_resource type="Script" path="res://scripts/components/Hitbox.gd" id="8_mr2vd"]
+[ext_resource type="Texture2D" path="res://resources/lights/light_soft.tres" id="9_ufp0l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yad5q"]
+size = Vector2(24, 10)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mmyb5"]
+diffuse_texture = ExtResource("5_i8q4e")
+normal_texture = ExtResource("6_pweid")
+
+[sub_resource type="Animation" id="Animation_ggekh"]
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eohq0"]
+length = 0.25
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fx4mo"]
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5wnn"]
+_data = {
+&"RESET": SubResource("Animation_ggekh"),
+&"bump": SubResource("Animation_eohq0"),
+&"move": SubResource("Animation_fx4mo")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxltl"]
+size = Vector2(26, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3t84k"]
+size = Vector2(24, 10)
+
+[node name="RobotVacuum" type="CharacterBody2D" unique_id=869894495]
+collision_layer = 4
+script = ExtResource("1_grbci")
+spark_scene = ExtResource("2_gpva0")
+knockback_resistance = 1.0
+coin_reward = 0
+coin_scene = ExtResource("3_4hdni")
+death_burst_scene = ExtResource("4_cut8o")
+initial_facing = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1329655334]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_yad5q")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1884748643]
+unique_name_in_owner = true
+
+[node name="Sprite" type="Sprite2D" parent="Visuals" unique_id=1829623867]
+unique_name_in_owner = true
+position = Vector2(0, -11)
+texture = SubResource("CanvasTexture_mmyb5")
+hframes = 4
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1385404231]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_p5wnn")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=676602136]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("7_f10ea")
+invincible = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1423207374]
+shape = SubResource("RectangleShape2D_uxltl")
+
+[node name="ContactHitbox" type="Area2D" parent="." unique_id=530635657]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+collision_layer = 16
+collision_mask = 32
+monitorable = false
+script = ExtResource("8_mr2vd")
+knockback_force = 200.0
+knockback_lift = 150.0
+rehit_interval = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox" unique_id=249883143]
+shape = SubResource("RectangleShape2D_3t84k")
+
+[node name="LedgeRay" type="RayCast2D" parent="." unique_id=168965501]
+unique_name_in_owner = true
+position = Vector2(13, -2)
+target_position = Vector2(0, 10)
+
+[node name="LedLight" type="PointLight2D" parent="." unique_id=235931233]
+position = Vector2(0, -14)
+color = Color(0.25, 0.9, 1, 1)
+energy = 0.9
+texture = ExtResource("9_ufp0l")
+texture_scale = 0.35

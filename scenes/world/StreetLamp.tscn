@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/world/street_lamp.png" id="1_v46y4"]
+[ext_resource type="Texture2D" path="res://assets/sprites/world/street_lamp_n.png" id="2_k3jpt"]
+[ext_resource type="Material" path="res://resources/materials/unshaded_add.tres" id="3_5kk0v"]
+[ext_resource type="Texture2D" path="res://assets/sprites/fx/light_banded.png" id="4_4s2km"]
+[ext_resource type="Script" path="res://scripts/world/FlickerLight.gd" id="5_iomg0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_634vq"]
+diffuse_texture = ExtResource("1_v46y4")
+normal_texture = ExtResource("2_k3jpt")
+
+[node name="StreetLamp" type="Node2D" unique_id=1504250349]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1036614421]
+position = Vector2(0, -32)
+texture = SubResource("CanvasTexture_634vq")
+
+[node name="Halo" type="Sprite2D" parent="." unique_id=965195477]
+modulate = Color(1, 0.85, 0.5, 0.8)
+material = ExtResource("3_5kk0v")
+position = Vector2(0, -52)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("4_4s2km")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=1298593613]
+position = Vector2(0, -50)
+color = Color(1, 0.82, 0.52, 1)
+energy = 1.15
+shadow_enabled = true
+texture = ExtResource("4_4s2km")
+texture_scale = 1.7
+height = 36.0
+script = ExtResource("5_iomg0")
+flicker_strength = 0.05
